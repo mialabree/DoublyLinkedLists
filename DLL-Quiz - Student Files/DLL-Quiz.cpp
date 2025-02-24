@@ -46,8 +46,6 @@ struct DLL
   Node * insert( Node * position, T const & data )
   {
     ///////////////////////// TO-DO (1) //////////////////////////////
-    template<typename T>
-    typename DLL<T>::node * DLL<T>::insert( Node * position, T const & data )
     Node * newNode = new Node ( data );
 
     newNode->_next = position;
