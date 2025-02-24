@@ -46,7 +46,18 @@ struct DLL
   Node * insert( Node * position, T const & data )
   {
     ///////////////////////// TO-DO (1) //////////////////////////////
+    template<typename T>
+    typename DLL<T>::node * DLL<T>::insert( Node * position, T const & data )
+    Node * newNode = new Node ( data );
 
+    newNode->_next = position;
+    newNode->_prev = position->_prev;
+
+    position->_prev->_next = newNode;
+    position->_prev = newNode;
+    
+    ++_size;
+    return newNode;
     /////////////////////// END-TO-DO (1) ////////////////////////////
   }
 
@@ -86,7 +97,12 @@ int main()
    _size  =  0
 
   ///////////////////////// TO-DO (2) //////////////////////////////
-
+  +------------------------------------+
+   |                                    |
+   +-> _sentinel <-> 0 <-+
+   _head -> 0
+   _tail -> 0
+   _size  =  0
   /////////////////////// END-TO-DO (2) ////////////////////////////
   #endif
   theList.print();
@@ -98,7 +114,12 @@ int main()
   // Be mindful to how you sketch.  Note the required 6 lines, attribute names, and the arrow syntax
   #if 0
   ///////////////////////// TO-DO (3) //////////////////////////////
-
+  +------------------------------------+
+   |                                    |
+   +-> _sentinel <-> 20 <-> 0 <-+
+   _head -> 20 -> 0
+   _tail -> 20 
+   _size  =  1
   /////////////////////// END-TO-DO (3) ////////////////////////////
   #endif
 
@@ -109,7 +130,12 @@ int main()
   // Be mindful to how you sketch.  Note the required 6 lines, attribute names, and the arrow syntax
   #if 0
   ///////////////////////// TO-DO (4) //////////////////////////////
-
+  +------------------------------------+
+  |                                    |
+  +-> _sentinel <-> 10 <-> 20 <-> 0 <-+
+  _head -> 10 -> 20 -> 0
+  _tail -> 20 
+  _size  =  2
   /////////////////////// END-TO-DO (4) ////////////////////////////
   #endif
 
@@ -120,7 +146,12 @@ int main()
   // Be mindful to how you sketch.  Note the required 6 lines, attribute names, and the arrow syntax
   #if 0
   ///////////////////////// TO-DO (5) //////////////////////////////
-
+  +------------------------------------+
+  |                                    |
+  +-> _sentinel <-> 10 <-> 20 <-> 0 <-> 40 <-+
+  _head -> 10 -> 20 -> 40 -> 0
+  _tail -> 40 
+  _size  =  3
   /////////////////////// END-TO-DO (5) ////////////////////////////
   #endif
 
@@ -131,7 +162,12 @@ int main()
   // Be mindful to how you sketch.  Note the required 6 lines, attribute names, and the arrow syntax
   #if 0
   ///////////////////////// TO-DO (6) //////////////////////////////
-
+  +------------------------------------+
+  |                                    |
+  +-> _sentinel <-> 10 <-> 20 <-> 0 <-> 40 <-+
+  _head -> 30 -> 10 -> 20 -> 40 -> 0
+  _tail -> 40 
+  _size  =  4
   /////////////////////// END-TO-DO (6) ////////////////////////////
   #endif
 }
